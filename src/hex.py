@@ -12,11 +12,17 @@ command, x = sys.argv[1:3]
 
 match command:
     case "encode":
-        # Implement the encoding here
-        encoding = ""
+        encoding_list = []
+        for i in x: 
+           encoding_list.append(hex(ord(i)))
+        encoding = ''.join(encoding_list)
         print(encoding)
 
     case "decode":
-        # Implement the decoding here
-        decoding = ""
+        y = x.split('0x')
+        decoding_list = []
+        y.pop(0) #remove first element
+        for i in y:
+            decoding_list.append(chr(int(i, base = 16)))
+        decoding = ''.join(decoding_list)
         print(decoding)
